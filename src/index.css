@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-border: rgba(0, 0, 0, 0.08);
+  
+  --color-brand-orange: #F8982E;
+  --color-brand-blue-light: #a9d6f3;
+  --color-brand-blue-dark: #303994;
+  --color-brand-lime: #d7e021;
+  --color-brand-cream: #F7F3E6;
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Animated Gradient Mesh - Soft tones */
+  .bg-mesh {
+    background: radial-gradient(circle at 15% 50%, rgba(248, 152, 46, 0.08), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(169, 215, 243, 0.15), transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(216, 224, 34, 0.08), transparent 40%);
+    filter: blur(60px);
+    animation: mesh-drift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes mesh-drift {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.1) translate(2%, 2%); }
+    100% { transform: scale(1) translate(-2%, -2%); }
+  }
+
+  /* Glowing lines */
+  .glow-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    height: 1px;
+    width: 100%;
+  }
+
+  .glow-line-vertical {
+    position: absolute;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    width: 1px;
+    height: 100%;
+  }
+
+  /* Subtle border beam effect on hover */
+  .border-beam {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .border-beam::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0 340deg, rgba(0, 0, 0, 0.05) 360deg);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .border-beam:hover::before {
+    opacity: 1;
+  }
+
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Glassmorphism */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+body {
+  @apply bg-white text-black antialiased selection:bg-brand-blue-light/30 selection:text-brand-blue-dark;
+}
+
+/* Typography adjustments for that tight, confident look */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  @apply font-serif;
+}
