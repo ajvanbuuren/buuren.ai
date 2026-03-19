@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCH288B2TB"></script>
+    <!-- Google Analytics 4 — loads only after cookie consent -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XCH288B2TB');
+
+      function loadGA() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XCH288B2TB';
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-XCH288B2TB');
+      }
+
+      // Check if consent was already given
+      if (localStorage.getItem('cookie-consent') === 'accepted') {
+        loadGA();
+      }
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -160,5 +171,34 @@
       </main>
     </div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#fff; border-top:1px solid #e4e4e7; padding:16px 24px; box-shadow:0 -2px 12px rgba(0,0,0,0.08); font-family:system-ui,-apple-system,sans-serif; font-size:14px; color:#3f3f46;">
+      <div style="max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px;">
+        <p style="flex:1; min-width:260px; margin:0; line-height:1.5;">
+          Wij gebruiken cookies om het gebruik van onze website te analyseren en uw ervaring te verbeteren. 
+          <a href="https://buuren.ai/privacy" style="color:#1e40af; text-decoration:underline;">Meer informatie</a>
+        </p>
+        <div style="display:flex; gap:8px; flex-shrink:0;">
+          <button onclick="cookieDecline()" style="padding:8px 20px; border:1px solid #d4d4d8; border-radius:8px; background:#fff; color:#3f3f46; cursor:pointer; font-size:14px;">Weigeren</button>
+          <button onclick="cookieAccept()" style="padding:8px 20px; border:none; border-radius:8px; background:#1e3a5f; color:#fff; cursor:pointer; font-size:14px;">Accepteren</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function cookieAccept() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        document.getElementById('cookie-banner').style.display = 'none';
+        loadGA();
+      }
+      function cookieDecline() {
+        localStorage.setItem('cookie-consent', 'declined');
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+      // Show banner if no choice has been made yet
+      if (!localStorage.getItem('cookie-consent')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+    </script>
   </body>
 </html>
