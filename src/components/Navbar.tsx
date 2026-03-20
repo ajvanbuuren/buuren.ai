@@ -15,6 +15,7 @@ export const Navbar = () => {
         <a href="#voorbeelden" className="hover:text-black transition-colors">{t.nav.examples}</a>
         <a href="#over-ons" className="hover:text-black transition-colors">{t.nav.about}</a>
         <a href="#contact" className="hover:text-black transition-colors">{t.nav.contact}</a>
+        <a href="/blog/" className="hover:text-black transition-colors">Blog</a>
       </div>
       <div className="flex items-center gap-4">
         <button 
