@@ -301,6 +301,7 @@ export const AIOpportunityScan = () => {
                     href="https://calendly.com/buurenai/ai-verkenning"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => { if (typeof gtag === 'function') gtag('event', 'calendly_click', { event_category: 'conversion', event_label: 'scan_result' }); }}
                     className="bg-[#f99830] text-white px-8 py-4 rounded-full font-medium hover:bg-[#f99830]/90 transition-colors inline-flex items-center gap-2"
                   >
                     Plan een AI-verkenning (15 min)

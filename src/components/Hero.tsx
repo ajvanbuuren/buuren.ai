@@ -44,7 +44,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-brand-blue-dark text-white px-8 py-4 rounded-lg font-medium hover:bg-brand-blue-dark/90 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-brand-blue-dark/10 border-beam font-sans">
+          <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" onClick={() => { if (typeof gtag === 'function') gtag('event', 'calendly_click', { event_category: 'conversion', event_label: 'hero_cta' }); }} className="w-full sm:w-auto bg-brand-blue-dark text-white px-8 py-4 rounded-lg font-medium hover:bg-brand-blue-dark/90 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-brand-blue-dark/10 border-beam font-sans">
             {t.hero.cta}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>

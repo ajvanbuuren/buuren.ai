@@ -36,10 +36,10 @@ export const About = () => {
           className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl"
         >
           <img 
-            src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&q=80" 
+            src="/rotterdam-skyline.jpg" 
             alt="Rotterdam Skyline" 
             className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-brand-blue-dark/10 mix-blend-multiply pointer-events-none" />
         </motion.div>

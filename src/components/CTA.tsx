@@ -43,7 +43,7 @@ export const CTA = () => {
             </div>
           </div>
 
-          <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-brand-blue-dark text-white px-8 py-4 rounded-xl font-medium hover:bg-brand-blue-dark/90 transition-all flex items-center justify-center gap-2 mx-auto group border-beam shadow-[0_0_30px_rgba(48,58,149,0.2)] font-sans">
+          <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" onClick={() => { if (typeof gtag === 'function') gtag('event', 'calendly_click', { event_category: 'conversion', event_label: 'bottom_cta' }); }} className="w-full sm:w-auto bg-brand-blue-dark text-white px-8 py-4 rounded-xl font-medium hover:bg-brand-blue-dark/90 transition-all flex items-center justify-center gap-2 mx-auto group border-beam shadow-[0_0_30px_rgba(48,58,149,0.2)] font-sans">
             {t.cta.btn}
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
