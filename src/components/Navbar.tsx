@@ -17,17 +17,18 @@ export const Navbar = () => {
         <a href="#contact" className="hover:text-black transition-colors">{t.nav.contact}</a>
         <a href="/blog/" className="hover:text-black transition-colors">Blog</a>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         <button 
           onClick={() => setLanguage(language === 'nl' ? 'en' : 'nl')} 
-          className="flex items-center gap-1.5 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
+          className="hidden md:flex items-center gap-1.5 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
         >
           <Globe className="w-4 h-4" />
           {language.toUpperCase()}
         </button>
-        <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" className="bg-brand-blue-dark text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-brand-blue-dark/90 transition-colors flex items-center gap-2 group">
-          {t.nav.book}
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+        <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" className="bg-brand-blue-dark text-white px-3 py-2 md:px-4 rounded-md text-xs md:text-sm font-medium hover:bg-brand-blue-dark/90 transition-colors flex items-center gap-1.5 md:gap-2 group whitespace-nowrap">
+          <span className="hidden md:inline">{t.nav.book}</span>
+          <span className="md:hidden">Plan verkenning</span>
+          <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-0.5 transition-transform" />
         </a>
       </div>
     </div>
