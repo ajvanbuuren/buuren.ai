@@ -21,7 +21,7 @@ export const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-4 text-brand-blue-dark">Bedrijfsgegevens</h4>
+          <h4 className="font-semibold mb-4 text-brand-blue-dark">{t.footer.business}</h4>
           <ul className="space-y-2 text-zinc-600 font-sans text-sm">
             <li>Florenweer 18</li>
             <li>3371 RC Hardinxveld-Giessendam</li>
@@ -35,7 +35,7 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} Buuren.AI. {t.footer.rights}
         </div>
         <div className="text-sm text-zinc-500 font-sans">
-          <a href="/privacy" className="hover:text-brand-orange transition-colors">Privacyverklaring</a>
+          <a href="/privacy" className="hover:text-brand-orange transition-colors">{t.footer.privacy}</a>
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, CheckCircle2, ArrowRight, Clock, Zap, BarChart3, Settings, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../translations';
 
 type Question = {
   id: string;
@@ -73,6 +74,7 @@ const questions: Question[] = [
 ];
 
 export const AIOpportunityScan = () => {
+  const { t } = useLanguage();
   const [step, setStep] = useState<'intro' | 'questions' | 'results'>('intro');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
@@ -126,27 +128,27 @@ export const AIOpportunityScan = () => {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#a9d6f3]/20 text-[#303994] text-sm font-medium mb-6">
                 <Zap className="w-4 h-4" />
-                AI Opportunity Scan
+                {t.scan.badge}
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-[#303994] mb-6 tracking-tight">
-                Ontdek waar AI waarde kan creëren in uw organisatie
+                {t.scan.title}
               </h2>
               <p className="text-lg text-zinc-600 mb-10 max-w-2xl mx-auto">
-                In ongeveer 2 minuten ontdekt u waar kunstmatige intelligentie in uw organisatie de meeste impact kan maken. U ontvangt direct een aantal concrete toepassingen die relevant zijn voor uw bedrijf.
+                {t.scan.subtitle}
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 text-sm text-zinc-500">
                 <div className="flex items-center gap-2">
                   <Clock className="w-5 h-5 text-[#f99830]" />
-                  <span>Duurt ongeveer 2 minuten</span>
+                  <span>{t.scan.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Settings className="w-5 h-5 text-[#f99830]" />
-                  <span>Geen technische kennis nodig</span>
+                  <span>{t.scan.noTech}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-[#f99830]" />
-                  <span>Direct inzicht</span>
+                  <span>{t.scan.directInsight}</span>
                 </div>
               </div>
 
@@ -154,8 +156,9 @@ export const AIOpportunityScan = () => {
                 onClick={() => setStep('questions')}
                 className="inline-flex items-center gap-2 bg-[#303994] text-white px-8 py-4 rounded-full font-medium hover:bg-[#303994]/90 transition-colors shadow-lg shadow-[#303994]/20"
               >
-                Start de scan
+                {t.scan.start}
                 <ArrowRight className="w-5 h-5" />
+              </button>
               </button>
             </motion.div>
           )}
@@ -170,8 +173,8 @@ export const AIOpportunityScan = () => {
             >
               <div className="mb-8">
                 <div className="flex justify-between text-sm font-medium text-zinc-500 mb-4">
-                  <span>Vraag {currentQuestionIndex + 1} van {questions.length}</span>
-                  <span>{Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}% voltooid</span>
+                  <span>{t.scan.question} {currentQuestionIndex + 1} {t.scan.of} {questions.length}</span>
+                  <span>{Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}% {t.scan.complete}</span>
                 </div>
                 <div className="w-full bg-zinc-100 h-2 rounded-full overflow-hidden">
                   <motion.div
@@ -221,7 +224,7 @@ export const AIOpportunityScan = () => {
                     disabled={!(answers[questions[currentQuestionIndex].id] as string[])?.length}
                     className="inline-flex items-center gap-2 bg-[#303994] text-white px-6 py-3 rounded-full font-medium hover:bg-[#303994]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Volgende
+                    {t.scan.next}
                     <ChevronRight className="w-5 h-5" />
                   </button>
                 </div>
@@ -241,58 +244,58 @@ export const AIOpportunityScan = () => {
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#303994] mb-4">
-                  Uw grootste AI-kansen
+                  {t.scan.resultsTitle}
                 </h2>
                 <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-                  Op basis van uw antwoorden zien we verschillende concrete mogelijkheden waar AI direct waarde kan toevoegen aan uw organisatie.
+                  {t.scan.resultsSubtitle}
                 </p>
               </div>
 
               <div className="grid gap-6">
                 <div className="bg-white p-6 md:p-8 rounded-2xl border border-zinc-200 shadow-sm">
-                  <h3 className="text-xl font-bold text-[#303994] mb-3">Document- en kennisautomatisering</h3>
-                  <p className="text-zinc-600">AI kan helpen bij het automatisch samenvatten van documenten, rapportages en interne kennis.</p>
+                  <h3 className="text-xl font-bold text-[#303994] mb-3">{t.scan.r1Title}</h3>
+                  <p className="text-zinc-600">{t.scan.r1Desc}</p>
                 </div>
                 
                 <div className="bg-white p-6 md:p-8 rounded-2xl border border-zinc-200 shadow-sm">
-                  <h3 className="text-xl font-bold text-[#303994] mb-3">Slimme verwerking van communicatie</h3>
-                  <p className="text-zinc-600">AI kan e-mails en klantvragen analyseren, categoriseren en deels automatisch beantwoorden.</p>
+                  <h3 className="text-xl font-bold text-[#303994] mb-3">{t.scan.r2Title}</h3>
+                  <p className="text-zinc-600">{t.scan.r2Desc}</p>
                 </div>
 
                 <div className="bg-white p-6 md:p-8 rounded-2xl border border-zinc-200 shadow-sm">
-                  <h3 className="text-xl font-bold text-[#303994] mb-3">Automatisering van repetitieve taken</h3>
-                  <p className="text-zinc-600">Taken zoals rapportages, administratieve verwerking en analyses kunnen deels geautomatiseerd worden.</p>
+                  <h3 className="text-xl font-bold text-[#303994] mb-3">{t.scan.r3Title}</h3>
+                  <p className="text-zinc-600">{t.scan.r3Desc}</p>
                 </div>
               </div>
 
               <div className="bg-[#a9d6f3]/20 rounded-2xl p-6 md:p-8 flex items-start gap-4">
                 <BarChart3 className="w-8 h-8 text-[#303994] shrink-0" />
                 <div>
-                  <h4 className="font-bold text-[#303994] mb-2">Impact</h4>
-                  <p className="text-[#303994]/80">Veel organisaties met een vergelijkbaar profiel besparen 20–30% tijd op repetitieve taken door AI structureel toe te passen.</p>
+                  <h4 className="font-bold text-[#303994] mb-2">{t.scan.impact}</h4>
+                  <p className="text-[#303994]/80">{t.scan.impactDesc}</p>
                 </div>
               </div>
 
               <div className="bg-[#303994] rounded-3xl p-8 md:p-12 text-center text-white mt-12">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-                  Wilt u deze kansen vertalen naar uw organisatie?
+                  {t.scan.ctaTitle}
                 </h3>
                 <p className="text-white mb-8 max-w-xl mx-auto">
-                  Tijdens een kort en vrijblijvend gesprek verkennen we samen hoe deze kansen in uw specifieke situatie toegepast kunnen worden.
+                  {t.scan.ctaSubtitle}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8 text-sm text-white">
                   <div className="flex items-center gap-2">
                     <Clock className="w-5 h-5" />
-                    <span>15 minuten</span>
+                    <span>{t.scan.ctaTime}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-5 h-5" />
-                    <span>Kosteloos en vrijblijvend</span>
+                    <span>{t.scan.ctaFree}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Zap className="w-5 h-5" />
-                    <span>Direct inzicht</span>
+                    <span>{t.scan.ctaDirect}</span>
                   </div>
                 </div>
 
@@ -304,14 +307,14 @@ export const AIOpportunityScan = () => {
                     onClick={() => { if (typeof gtag === 'function') gtag('event', 'calendly_click', { event_category: 'conversion', event_label: 'scan_result' }); }}
                     className="bg-[#f99830] text-white px-8 py-4 rounded-full font-medium hover:bg-[#f99830]/90 transition-colors inline-flex items-center gap-2"
                   >
-                    Plan een AI-verkenning (15 min)
+                    {t.scan.ctaBtn}
                     <ArrowRight className="w-5 h-5" />
                   </a>
                   <button
                     onClick={resetScan}
                     className="text-white hover:text-[#a9d6f3] px-6 py-4 font-medium transition-colors"
                   >
-                    Scan opnieuw doen
+                    {t.scan.retry}
                   </button>
                 </div>
               </div>
