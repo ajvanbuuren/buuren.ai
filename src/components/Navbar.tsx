@@ -20,10 +20,10 @@ export const Navbar = () => {
       <div className="flex items-center gap-2 md:gap-4">
         <button 
           onClick={() => setLanguage(language === 'nl' ? 'en' : 'nl')} 
-          className="hidden md:flex items-center gap-1.5 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
+          className="flex items-center gap-1.5 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
         >
           <Globe className="w-4 h-4" />
-          {language.toUpperCase()}
+          <span className="hidden md:inline">{language.toUpperCase()}</span>
         </button>
         <a href="https://calendly.com/buurenai/ai-verkenning" target="_blank" rel="noopener noreferrer" className="bg-brand-blue-dark text-white px-3 py-2 md:px-4 rounded-md text-xs md:text-sm font-medium hover:bg-brand-blue-dark/90 transition-colors flex items-center gap-1.5 md:gap-2 group whitespace-nowrap">
           <span className="hidden md:inline">{t.nav.book}</span>
