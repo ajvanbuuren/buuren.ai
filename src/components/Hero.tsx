@@ -25,7 +25,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6"
         >
-          {t.hero.title1}<br className="hidden md:block" />
+          {t.hero.title1}{' '}<br className="hidden md:block" />
           {t.hero.title2}<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-dark to-brand-blue-light">{t.hero.title3}</span>
         </motion.h1>
 

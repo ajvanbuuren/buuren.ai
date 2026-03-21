@@ -5,7 +5,7 @@ export const AIOpportunityMap = () => {
   const areas = [
     { 
       icon: <Settings className="w-6 h-6" />, 
-      name: 'Operations', 
+      name: 'Operaties', 
       desc: 'Procesoptimalisatie & planning', 
       bg: 'bg-white', 
       border: 'border-zinc-200', 
@@ -14,7 +14,7 @@ export const AIOpportunityMap = () => {
     },
     { 
       icon: <DollarSign className="w-6 h-6" />, 
-      name: 'Finance', 
+      name: 'Financiën', 
       desc: 'Factuurverwerking & forecasting', 
       bg: 'bg-white', 
       border: 'border-zinc-200', 
@@ -32,7 +32,7 @@ export const AIOpportunityMap = () => {
     },
     { 
       icon: <Users className="w-6 h-6" />, 
-      name: 'Customer Service', 
+      name: 'Klantenservice', 
       desc: 'Slimme routering & concept-antwoorden', 
       bg: 'bg-white', 
       border: 'border-zinc-200', 
