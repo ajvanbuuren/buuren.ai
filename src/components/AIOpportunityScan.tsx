@@ -10,71 +10,17 @@ type Question = {
   options: string[];
 };
 
-const questions: Question[] = [
-  {
-    id: 'size',
-    title: 'Hoe groot is uw organisatie?',
-    type: 'single',
-    options: [
-      '1–10 medewerkers',
-      '10–50 medewerkers',
-      '50–250 medewerkers',
-      '250+'
-    ]
-  },
-  {
-    id: 'time',
-    title: 'Waar verliest uw team momenteel het meeste tijd?',
-    type: 'multiple',
-    options: [
-      'E-mails en communicatie',
-      'Documenten schrijven of samenvatten',
-      'Administratie en verwerking',
-      'Data analyse of rapportages',
-      'Klantenservice of vragen beantwoorden',
-      'Marketing of content'
-    ]
-  },
-  {
-    id: 'usage',
-    title: 'Gebruikt uw organisatie momenteel al AI-tools?',
-    type: 'single',
-    options: [
-      'Nee',
-      'Af en toe (bijvoorbeeld ChatGPT)',
-      'Regelmatig',
-      'AI is al geïntegreerd in processen'
-    ]
-  },
-  {
-    id: 'type',
-    title: 'Welke omschrijving past het beste bij uw organisatie?',
-    type: 'single',
-    options: [
-      'Zakelijke dienstverlening',
-      'Financiële dienstverlening',
-      'Bouw / vastgoed',
-      'IT / technologie',
-      'Retail / e-commerce',
-      'Overig'
-    ]
-  },
-  {
-    id: 'ambition',
-    title: 'Wat is uw belangrijkste doel met AI?',
-    type: 'single',
-    options: [
-      'Tijd besparen',
-      'Efficiënter werken',
-      'Betere analyses en inzichten',
-      'Innovatie of nieuwe diensten',
-      'Kosten verlagen'
-    ]
-  }
-];
-
 export const AIOpportunityScan = () => {
   const { t } = useLanguage();
+
+  const questions: Question[] = [
+    { id: 'size', title: t.scan.q1, type: 'single', options: t.scan.q1o as unknown as string[] },
+    { id: 'time', title: t.scan.q2, type: 'multiple', options: t.scan.q2o as unknown as string[] },
+    { id: 'usage', title: t.scan.q3, type: 'single', options: t.scan.q3o as unknown as string[] },
+    { id: 'type', title: t.scan.q4, type: 'single', options: t.scan.q4o as unknown as string[] },
+    { id: 'ambition', title: t.scan.q5, type: 'single', options: t.scan.q5o as unknown as string[] }
+  ];
+
   const [step, setStep] = useState<'intro' | 'questions' | 'results'>('intro');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
